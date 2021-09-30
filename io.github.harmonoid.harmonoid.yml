@@ -66,8 +66,8 @@ modules:
         sha256: 3f40159e090829393a11dcbe0f08de205177eddc4091a900163a11b721bd2b68  
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/harmonoid/harmonoid/releases
-          version-query: .[0] | .tag_name
-          url-query: .[0] | .assets | select(.name=="harmonoid-linux-x86_64.tar.gz") | .browser_download_url
+          url: https://api.github.com/repos/harmonoid/harmonoid/releases/latest
+          version-query: .tag_name
+          url-query: .assets[]  | select(.name=="harmonoid-linux-x86_64.tar.gz") | .browser_download_url
       - type: file
         path: harmonoid.png
