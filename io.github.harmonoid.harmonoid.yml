@@ -1,6 +1,6 @@
 app-id: io.github.harmonoid.harmonoid
 runtime: org.gnome.Platform
-runtime-version: "41"
+runtime-version: '41'
 sdk: org.gnome.Sdk
 rename-icon: harmonoid
 rename-appdata-file: harmonoid.appdata.xml
@@ -21,17 +21,17 @@ modules:
   - name: libzen
     subdir: Project/GNU/Library
     config-opts:
-    - --enable-shared
-    - --disable-static
+      - --enable-shared
+      - --disable-static
     cleanup:
-    - /bin
-    - /include
-    - /lib/pkgconfig
-    - /lib/*.la
+      - /bin
+      - /include
+      - /lib/pkgconfig
+      - /lib/*.la
     sources:
-    - type: archive
-      url: https://github.com/MediaArea/ZenLib/archive/refs/tags/v0.4.39.tar.gz
-      sha256: a29fcafe41afac4ff818414ada18e4549bb2e77b2962bba2dd39db5cf747044e
+      - type: archive
+        url: https://github.com/MediaArea/ZenLib/archive/refs/tags/v0.4.39.tar.gz
+        sha256: a29fcafe41afac4ff818414ada18e4549bb2e77b2962bba2dd39db5cf747044e
 
   - name: libmediainfo
     subdir: Project/GNU/Library
@@ -61,13 +61,14 @@ modules:
       - type: archive
         only-arches:
           - x86_64
-        url: https://github.com/harmonoid/harmonoid/releases/download/v0.1.7/harmonoid-linux-x86_64.tar.gz
+        url: https://github.com/harmonoid/harmonoid/releases/download/v0.1.8/harmonoid-linux-x86_64.tar.gz
         dest: harmonoid
-        sha256: 3f40159e090829393a11dcbe0f08de205177eddc4091a900163a11b721bd2b68  
+        sha256: 50334ce6231ad4493db623f3e777b71f576fcf02c785f1d507cae327ca581201
         x-checker-data:
           type: json
           url: https://api.github.com/repos/harmonoid/harmonoid/releases/latest
           version-query: .tag_name
-          url-query: .assets[]  | select(.name=="harmonoid-linux-x86_64.tar.gz") | .browser_download_url
+          url-query: .assets[]  | select(.name=="harmonoid-linux-x86_64.tar.gz") |
+            .browser_download_url
       - type: file
         path: harmonoid.png
