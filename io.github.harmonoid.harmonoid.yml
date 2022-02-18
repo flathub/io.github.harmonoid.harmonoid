@@ -18,36 +18,38 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
   - --own-name=com.alexmercerind.harmonoid
 modules:
-  - name: libzen
-    subdir: Project/GNU/Library
-    config-opts:
-      - --enable-shared
-      - --disable-static
+  - name: mpv
+    buildsystem: simple
     cleanup:
-      - /bin
       - /include
       - /lib/pkgconfig
-      - /lib/*.la
+      - /share/doc
+      - /share/bash-completion
+      - /share/zsh
+      - mpv.png
+      - mpv.svg
+      - mpv-symbolic.svg
+      - mpv.desktop
+    build-commands:
+      - python3 waf configure --prefix=/app --enable-libmpv-shared --disable-build-date
+        --disable-alsa --enable-libmpv-shared --enable-sdl2 --enable-libarchive
+      - python3 waf build
+      - python3 waf install
+    post-install:
+          # y and g Step forward/backward in the subtitle list
+      - mkdir -p /app/etc/mpv/
+      - echo 'y sub-step +1'  > /app/etc/mpv/input.conf
+      - echo 'g sub-step -1' >> /app/etc/mpv/input.conf
+          # save screenshots at ~/Pictures/mpv-screenshots
+      - echo "screenshot-directory=~/Pictures/mpv-screenshots" > /app/etc/mpv/mpv.conf
     sources:
       - type: archive
-        url: https://github.com/MediaArea/ZenLib/archive/refs/tags/v0.4.39.tar.gz
-        sha256: a29fcafe41afac4ff818414ada18e4549bb2e77b2962bba2dd39db5cf747044e
-
-  - name: libmediainfo
-    subdir: Project/GNU/Library
-    config-opts:
-      - --enable-shared
-      - --disable-static
-      - --with-libcurl
-    cleanup:
-      - /bin
-      - /include
-      - /lib/pkgconfig
-      - /lib/*.la
-    sources:
-      - type: archive
-        url: https://github.com/MediaArea/MediaInfoLib/archive/refs/tags/v21.03.tar.gz
-        sha256: b083c113adb80f6608d5e86d1be07f9abd4257bd0e8456c8f9eb8756a385c5a0
+        url: https://github.com/mpv-player/mpv/archive/v0.34.1.tar.gz
+        sha256: 32ded8c13b6398310fa27767378193dc1db6d78b006b70dbcbd3123a1445e746
+      - type: file
+        url: https://waf.io/waf-2.0.23
+        sha256: 28a2e4583314a162cfcbffefb8a9202c1d7869040d30b5852da479b76d9c0491
+        dest-filename: waf
 
   - name: harmonoid
     buildsystem: simple
