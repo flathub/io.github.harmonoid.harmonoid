@@ -61,9 +61,9 @@ modules:
       - type: archive
         only-arches:
           - x86_64
-        url: https://github.com/harmonoid/harmonoid/releases/download/v0.1.8/harmonoid-linux-x86_64.tar.gz
+        url: https://github.com/harmonoid/harmonoid/releases/download/v0.2.0/harmonoid-linux-x86_64.tar.gz
         dest: harmonoid
-        sha256: 50334ce6231ad4493db623f3e777b71f576fcf02c785f1d507cae327ca581201
+        sha256: fb0f88233bf0858f6e49e2c2c8c6beb6ab25549dbb79cabee89ab6a7ece655eb
         x-checker-data:
           type: json
           url: https://api.github.com/repos/harmonoid/harmonoid/releases/latest
