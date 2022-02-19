@@ -153,7 +153,7 @@ modules:
           - x86_64
         url: https://github.com/harmonoid/harmonoid/releases/download/v0.2.0/harmonoid-linux-x86_64.tar.gz
         dest: harmonoid
-        sha256: fb0f88233bf0858f6e49e2c2c8c6beb6ab25549dbb79cabee89ab6a7ece655eb
+        sha256: c4949addb91a2b71d2ba81e969af6ce5c4ba18f9703ad8ac1efc8344ee437af1
         x-checker-data:
           type: json
           url: https://api.github.com/repos/harmonoid/harmonoid/releases/latest
