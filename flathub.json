@@ -1,3 +1,6 @@
 {
+  "skip-arches": [
+      "aarch64"
+   ],
   "end-of-life": "The application has been removed from Flathub."
 }
